@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
             }
             case R.id.btemail:{
                 EditText etemail = (EditText)findViewById(R.id.input3);
+                email(etemail.getText().toString());
                 break;
             }
             case R.id.btregister:{
@@ -64,7 +65,8 @@ public class MainActivity extends Activity {
                 if(grantResults.length>0&&
                         permissions[0].equals(Manifest.permission.CALL_PHONE)&&
                         grantResults[0]==getPackageManager().PERMISSION_GRANTED){
-
+                    EditText etcall = (EditText)findViewById(R.id.input1);
+                    callPhone(etcall.getText().toString());
                 }
         }
     }
@@ -75,5 +77,14 @@ public class MainActivity extends Activity {
         }
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(i);
+    }
+    private void email(String url){
+        Intent mail = new Intent(Intent.ACTION_SEND);
+        mail.setType("plain/text");
+        mail.putExtra(Intent.EXTRA_EMAIL, new String[]{url});
+        mail.putExtra(Intent.EXTRA_SUBJECT, "subject");
+        mail.putExtra(Intent.EXTRA_TEXT, "message");
+        startActivity(Intent.createChooser(mail, "send email"));
+
     }
 }
