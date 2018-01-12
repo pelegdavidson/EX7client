@@ -69,8 +69,11 @@ public class MainActivity extends Activity {
         }
     }
     private void surf(String url){
-        Uri surfstring = Uri.parse("https://" + url);
-        Intent i = new Intent(Intent.ACTION_VIEW, surfstring);
+        if(!url.toLowerCase().contains("https://"))
+        {
+            url =("https://" + url);
+        }
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(i);
     }
 }
