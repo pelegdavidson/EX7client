@@ -69,9 +69,9 @@ public class MainActivity extends Activity {
         }
     }
     private void surf(String url){
-        if(!url.toLowerCase().contains("https://"))
+        if(!url.toLowerCase().contains("http://"))
         {
-            url =("https://" + url);
+            url =("http://" + url);
         }
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(i);
