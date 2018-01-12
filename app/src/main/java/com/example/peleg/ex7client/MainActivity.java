@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private final int MY_CALL_REQUEST=1;
+    private final int REGISTER_REQUEST=5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,8 @@ public class MainActivity extends Activity {
             }
             case R.id.btregister:{
                 EditText etregister = (EditText)findViewById(R.id.input4);
+                Intent reg = new Intent("com.ex7.action.REGISTER");
+                startActivityForResult(reg, REGISTER_REQUEST);
                 break;
             }
 
