@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
             }
             case R.id.btsurf:{
                 EditText etsurf = (EditText)findViewById(R.id.input2);
+                surf(etsurf.getText().toString());
                 break;
             }
             case R.id.btemail:{
@@ -48,7 +49,7 @@ public class MainActivity extends Activity {
 
         }
     }
-
+    @SuppressWarnings({"MissingPermission"})
     private void callPhone(String phoneNumber){
         Uri call = Uri.parse("tel:" + phoneNumber);
         Intent c = new Intent(Intent.ACTION_CALL, call);
@@ -66,5 +67,10 @@ public class MainActivity extends Activity {
 
                 }
         }
+    }
+    private void surf(String url){
+        Uri surfstring = Uri.parse("https://" + url);
+        Intent i = new Intent(Intent.ACTION_VIEW, surfstring);
+        startActivity(i);
     }
 }
