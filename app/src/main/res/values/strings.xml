@@ -5,4 +5,7 @@
     <string name="op2">Surf</string>
     <string name="op3">Email</string>
     <string name="op4">Register</string>
+    <string name="Welcome">
+    <item quantity="one">Welcome back %1$s %2$s %3$s</item>
+    </string>
 </resources>

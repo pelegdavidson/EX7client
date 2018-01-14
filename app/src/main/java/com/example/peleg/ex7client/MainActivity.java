@@ -2,14 +2,15 @@ package com.example.peleg.ex7client;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
+
 
 public class MainActivity extends Activity {
     private final int MY_CALL_REQUEST=1;
@@ -88,6 +89,21 @@ public class MainActivity extends Activity {
         mail.putExtra(Intent.EXTRA_SUBJECT, "subject");
         mail.putExtra(Intent.EXTRA_TEXT, "message");
         startActivity(Intent.createChooser(mail, "send email"));
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Resources res =getResources();
+        String gender="";
+        TextView tv = (TextView) findViewById(R.id.input4);
+        if (requestCode == REGISTER_REQUEST && resultCode == RESULT_OK) {
+            if (data.getStringExtra("Gender").compareTo("Male") == 0) {
+                gender ="Mr.";
+            } else
+                gender = "Mrs.";
+        }
+        tv.setText(res.getString(R.string.Welcome ,gender,data.getStringExtra("First Name"),data.getStringExtra("Last Name")));
 
     }
 }
